@@ -5,12 +5,23 @@ require_relative "application"
 Rails.application.initialize!
 
 
+# ActionMailer::Base.smtp_settings = {
+#   user_name: ENV['SENDGRID_LOGIN'],
+#   password: ENV['SENDGRID_PWD'],
+#   domain: 'maltaevents.herokuapp.com',
+#   address: 'smtp.sendgrid.net',
+#   port: 587,
+#   authentication: :plain,
+#   enable_starttls_auto: true
+# }
+
+
 ActionMailer::Base.smtp_settings = {
-  user_name: ENV['SENDGRID_LOGIN'],
-  password: ENV['SENDGRID_PWD'],
-  domain: 'maltaevents.herokuapp.com',
-  address: 'smtp.sendgrid.net',
-  port: 587,
-  authentication: :plain,
-  enable_starttls_auto: true
+  :user_name => ENV['SENDGRID_LOGIN'],
+  :password => ENV['SENDGRID_PWD'],
+  :domain => 'monsite.fr',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
 }

@@ -91,8 +91,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # 3 lignes ajoutées avec Jordan
-  config.action_mailer.default_url_options = { :host => 'https://maltaevents.herokuapp.com/' }
-  config.action_mailer.perform_deliveries = true # false pour suspendre l'envoi d'emails par l'app 
-  config.action_mailer.delivery_method = :smtp
+  # # 3 lignes ajoutées avec Jordan
+  # config.action_mailer.default_url_options = { :host => 'https://maltaevents.herokuapp.com/' }
+  # config.action_mailer.perform_deliveries = true # false pour suspendre l'envoi d'emails par l'app 
+  # config.action_mailer.delivery_method = :smtp
 end
