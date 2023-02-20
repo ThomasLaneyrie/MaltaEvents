@@ -38,5 +38,4 @@ end
    )
 end
 
-
 puts "Seeds réalisés avec succès !"
