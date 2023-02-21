@@ -14,7 +14,7 @@
 
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">MaltaEvent</a>
+    <a class="navbar-brand m-1" href="#">MaltaEvent</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +22,10 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" <%= link_to "Home", attendances_path  %> </a>
+          <a class="nav-link" <%= link_to "Liste des évènements à Malte", root_path  %> </a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" <%= link_to "Créer un nouvel event", new_event_path %> </a>
+          <a class="nav-link" <%= link_to "Créer un nouvel évènement", new_event_path %> </a>
         </li>
       </ul>
       <% if user_signed_in? %>
