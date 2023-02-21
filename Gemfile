@@ -9,8 +9,8 @@ gem 'faker'
 gem 'pry'
 gem 'dotenv-rails'
 gem 'date_validator'
-# gem 'devise'
-gem 'devise', github: 'heartcombo/devise', branch: 'main'
+gem 'devise'
+# gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
