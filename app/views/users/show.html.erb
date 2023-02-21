@@ -1,14 +1,16 @@
-<h1>Voici ton profil</h1>
+<h1>Voici ta page profil</h1>
 
-<p>
-  <%= @user.email %>
-</p>
-<p>
-  <%= current_user.email %>
-</p>
+<p>Bienvenue <%= @user.first_name %>  <%= @user.last_name %></p>
+<p>Ton e-mail de connexion : <%= @user.email %>
+
+<p>Voici la liste des events que tu as crées</p>
+<ul>
+<% @user.administrates.each_with_index do |event, index| %>
+  <li> Event n° <%= index +1 %> : <%= event.title %> à <%= event.location %> </li>
+<% end %>
+</ul>
 
 <%= link_to "Modifier mon e-mail ou mon MdP", edit_user_registration_path  %>
 
 <p>
-RESTE A COMPLETER PLUS TARD + DEMANDER SI CA SERT A QC DE REMPLIR LE CONTROLLER DU SHOW MAINTENANT QUE J4AI JUSTE A APPELER LE CURRENT_USER ? CA M'AFFICHE QUAND MEME
 </p>

@@ -1,2 +1,4 @@
-<h1>Attendances#show</h1>
-<p>Find me in app/views/attendances/show.html.erb</p>
+<h1>Bienvenue à ton attendance !</h1>
+<p>
+Le <%= @attendance.event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @attendance.event.title %></strong> à <%= @attendance.event.location %>
+</p>

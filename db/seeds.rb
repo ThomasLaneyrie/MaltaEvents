@@ -12,6 +12,8 @@ Attendance.destroy_all
 
 5.times do |index|
   User.create(
+    email:Faker::Internet.email,
+    password: "coucou",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Food.description
@@ -22,7 +24,7 @@ end
   Event.create(
     start_date: DateTime.strptime('2024-02-20T04:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z'),
     duration: 55,
-    title: Faker::Lorem.paragraph_by_chars(number: 6, supplemental: false),
+    title: ["Concert", "Spectacle de danse", "Tournoi de karioka", "Carnaval", "Candlelight"].sample,
     description: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     price: rand(1..1000),
     location: ["Santa Venera", "Attard", "Valetta", "San Julian", "Mdina", "Sliema", "Gzira"].sample,

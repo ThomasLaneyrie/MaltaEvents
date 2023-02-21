@@ -1,3 +1,8 @@
-<h1>Page d'acceuil de MaltaEvents</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
-Attendance#index
+<h1>Page d'acceuil : liste des attendances à Malte </h1>
+
+<ul>
+<% @attendances.each_with_index do |attendance, index|%>
+<li> Le <%= attendance.event.start_date.strftime("%d-%m-%y") %> se tiendra l'event <strong><%= attendance.event.title %></strong> à <%= attendance.event.location %>
+<%= link_to "Cliquer ici", attendance_path(attendance.id) %>
+</li>
+<% end %>
