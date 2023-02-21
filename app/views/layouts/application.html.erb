@@ -12,7 +12,6 @@
 
   </head>
 
-
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">MaltaEvent</a>
@@ -35,7 +34,9 @@
       <% if user_signed_in? %>
         <form class="form-inline">
           <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Mon profil", user_path(current_user)  %> </a>
-          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Sign out",  destroy_user_session_path, method: :delete %></a>
+          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Log out",  destroy_user_session_path, method: :delete %></a>
+          <%= link_to "Log out",  destroy_user_session_path, method: :delete, data: { turbo_disabled: true } %>
+          <%= button_to("Log Out", destroy_user_session_path, method: :delete) %>
         </form>
       <% else %>
         <form class="form-inline">
