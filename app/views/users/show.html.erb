@@ -1,16 +1,49 @@
 <h1>Voici ta page profil</h1>
 
 <p>Bienvenue <%= @user.first_name %>  <%= @user.last_name %></p>
-<p>Ton e-mail de connexion : <%= @user.email %>
-
-<p>Voici la liste des events que tu as crées</p>
-<ul>
-<% @user.administrates.each_with_index do |event, index| %>
-  <li> Event n° <%= index +1 %> : <%= event.title %> à <%= event.location %> </li>
-<% end %>
-</ul>
-
+<p>Ton e-mail de connexion : <%= @user.email %></p>
 <%= link_to "Modifier mon e-mail ou mon MdP", edit_user_registration_path  %>
 
-<p>
-</p>
+
+
+<div class="m-4">
+<h2> Les évènements que tu as organisé </h2> </div>
+  <div class="container border border-secondary"> 
+    <div class="row border border-secondary fw-bold">
+        <div class="col-4">Nom de l'évènement crée</div>    
+        <div class="col-3">Ville de l'évènement</div>
+        <div class="col-3">Date de l'évènement</div>           
+        <div class="col-2">Nombre de participants</div>
+    </div>
+    <% @user.administrates.each_with_index do |event, index| %> 
+                          
+        <div class="row border border-light">
+            <div class="col-4"><a href= "<%=event_path(event.id)%>"><%= event.title %></a></div>            
+            <div class="col-3"><%= event.title %></div>
+            <div class="col-3"><%= event.start_date.strftime("%d-%m-%y") %></div>         
+            <div class="col-2"><%= event.attendants.count %></div>    
+        </div>
+
+    <% end %>
+  </div>
+
+<div class="m-4">
+<h2> Les évènements auxquelles tu as participé </h2> </div>
+  <div class="container border border-secondary"> 
+    <div class="row border border-secondary fw-bold">
+        <div class="col-4">Nom de l'évènement</div>    
+        <div class="col-3">Ville de l'évènement</div>
+        <div class="col-3">Date de l'évènement</div>           
+        <div class="col-2">Nombre de participants</div>
+    </div>
+    <% @user.events.each_with_index do |event, index| %> 
+                          
+        <div class="row border border-light">
+            <div class="col-4"><a href= "<%=event_path(event.id)%>"><%= event.title %></a></div>            
+            <div class="col-3"><%= event.title %></div>
+            <div class="col-3"><%= event.start_date.strftime("%d-%m-%y") %></div>         
+            <div class="col-2"><%= event.attendants.count %></div>    
+        </div>
+
+    <% end %>
+  </div>

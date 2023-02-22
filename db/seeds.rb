@@ -10,7 +10,7 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-5.times do |index|
+50.times do |index|
   User.create(
     email:Faker::Internet.email,
     password: "coucou",
@@ -20,19 +20,19 @@ Attendance.destroy_all
    )
 end
 
-5.times do |index|
+10.times do |index|
   Event.create(
     start_date: DateTime.strptime('2024-02-20T04:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z'),
     duration: 55,
-    title: ["Concert", "Spectacle de danse", "Tournoi de karioka", "Carnaval", "Candlelight"].sample,
+    title: ["Concert", "Spectacle de danse", "Tournoi de karioka", "Carnaval", "Grosse soirée chez José"].sample,
     description: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     price: rand(1..1000),
-    location: ["Santa Venera", "Attard", "Valetta", "San Julian", "Mdina", "Sliema", "Gzira"].sample,
+    location: ["Venera", "Attard", "La Valette", "San Julian", "Mdina", "Sliema", "Gzira"].sample,
     administrator: User.all.sample
    )
 end
 
-5.times do |index|
+200.times do |index|
   Attendance.create(
     stripe_customer_id: ["strip toi même", "lache la tunes"].sample,
     attendant: User.all.sample,

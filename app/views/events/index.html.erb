@@ -1,2 +1,28 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<% flash.each do |name, msg| %>                                                        
+  <div class="alert alert-<%=name%>" role="alert"> <%= msg %> </div>       
+<% end %>   
+
+<div class="m-3">
+    <h2> Liste des évènements à Malte !</h2><br/>
+    <div class="row m-1">
+      <% @events.each_with_index do |event, index| %>
+        <div class = "col d-flex align-items-top">
+          <div class="card mb-3 p-3" style="width: 20rem;">
+            <div class="card-body">
+              <h5 class="card-title d-flex justify-content-center" style="height: 3rem;">"<%= event.title %>"</h5>
+              <p class="card-text d-flex justify-content-center">L'évènement se tiendra à <%= event.location %></p>
+              <p class="card-text d-flex justify-content-center">Le <%= event.start_date.strftime("%d-%m-%y") %></p>
+              <p class="card-text d-flex justify-content-center"></p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-center">Début de l'évènement à <%= event.start_date.strftime("%H:%M") %><br/></li>
+                <li class="list-group-item d-flex justify-content-center">Nombre de participants : <%= event.attendances.count %> </li>
+                <p> </p>
+              </ul>
+              <div class="btn btn-warning d-flex justify-content-center">
+                <%= link_to "Réserver ma place", event_path(event.id), style: 'color:white' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>

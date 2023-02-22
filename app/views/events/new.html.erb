@@ -4,34 +4,35 @@
 
 <h1>Création d'un nouvel event à Malte</h1>
 
-<%= form_tag url_for(action: 'create'), method: "post" do %>
-  <p>
-    <%= label_tag "Titre de l'event :" %>                                
-    <%= text_field_tag 'title', @event.title, minlength: 5, maxlength: 140 %>                             
-  </p>
-  <p>
-    <%= label_tag "Description :" %> <br>                               
-    <%= text_area_tag 'description', @event.description, minlength: 20, maxlength: 1000 %>                             
-  </p>
-  <p>
-    <%= label_tag "Lieu :" %>                                
-    <%= select_tag 'location', options_for_select(["", "Santa Venera", "Attard", "Valetta", "San Julian", "Mdina", "Sliema", "Gzira"]) %>      
-  </p>
-  <p>
-    <%= label_tag "Date :" %>                                
-    <%= datetime_local_field_tag 'start_date', @event.start_date %>  
-  </p> 
-  <p>
-    <%= label_tag "Durée en minute :" %>                                
-    <%= number_field 'duration', @event.duration, min: 1, max: 1000 %>  
-  </p>                          
-  <p>
-    <%= label_tag "Prix de participation :" %>                                
-    <%= number_field 'price', @event.price, min: 1, max: 1000 %>  
-  </p>           
-  <%= submit_tag "Create Post" %>                               
-<% end %>
-
+<div class= "m-4">
+  <%= form_tag url_for(action: 'create'), method: "post" do %>
+    <p>
+      <%= label_tag "Titre de l'event :" %>                                
+      <%= text_field_tag 'title', @event.title, minlength: 5, maxlength: 140 %>                             
+    </p>
+    <p>
+      <%= label_tag "Description :" %> <br>                               
+      <%= text_area_tag 'description', @event.description, minlength: 20, maxlength: 1000, size: "50x3" %>                             
+    </p>
+    <p>
+      <%= label_tag "Lieu :" %>                                
+      <%= select_tag 'location', options_for_select(["", "Venera", "Attard", "La Valette", "San Julian", "Mdina", "Sliema", "Gzira"]) %>      
+    </p>
+    <p>
+      <%= label_tag "Date :" %>                                
+      <%= datetime_local_field_tag 'start_date', @event.start_date %>  
+    </p> 
+    <p>
+      <%= label_tag "Durée en minute :" %>                                
+      <%= number_field 'duration', @event.duration, min: 1, max: 1000 %>  
+    </p>                          
+    <p>
+      <%= label_tag "Prix de participation :" %>                                
+      <%= number_field 'price', @event.price, min: 1, max: 1000 %>  
+    </p>           
+    <%= submit_tag "Create Post" %>                               
+  <% end %>
+</div>
 
 
 

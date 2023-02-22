@@ -13,5 +13,6 @@ class Event < ApplicationRecord
   end
 
   belongs_to :administrator, class_name: "User"
-  has_many :attendants, class_name: "User", through: :attendance
+  has_many :attendances
+  has_many :attendants, class_name: "User", through: :attendances
 end
