@@ -53,10 +53,22 @@
               </ul>
               </li>
             </li>
-          <% end %>
+            <% end %>
 
         </ul>
-      </div>    
+      </div>  
+
+      <% if user_signed_in? %>
+        <form class="form-inline">
+          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Mon profil", user_path(current_user)  %> </a>
+          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Sign out",  destroy_user_session_path, method: :delete %></a>
+        </form>
+      <% else %>
+        <form class="form-inline">
+          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Sign up", new_user_registration_path %> </a>    
+          <a class="btn btn-outline-info my-2 my-sm-0 m-2" <%= link_to "Sign in", new_user_session_path %> </a>  
+        </form>
+      <% end %>  
     </div>
   </nav>
 
