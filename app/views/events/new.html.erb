@@ -1,8 +1,4 @@
-<% flash.each do |name, msg| %>                                                        
-  <div class="alert alert-<%=name%>" role="alert"> <%= msg %> </div>       
-<% end %>   
-
-<h1>Création d'un nouvel event à Malte</h1>
+ <h1>Création d'un nouvel event à Malte</h1>
 
 <%= form_with model: @event do |f| %>
   <div class="form-group">
@@ -19,8 +15,7 @@
     <%= f.label "Durée en minutes" %>
     <%= f.select :duration, (5..120).step(5).to_a %><br><br>
     <%= f.label "Merci d'ajouter une photo à votre event :" %>
-    <%= file_field_tag :photoevent %>                                 
-    <%= submit_tag "Ajouter" %><br><br>
+    <p> Image de l'event: </br>  <%= f.file_field :photoevent, class: "form-control" %></p>
     <%= f.submit "Create Event (Form_with)", class: "btn btn-primary"  %>
   </div>
 <% end %>
@@ -32,9 +27,6 @@
 <%else%>
   <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
 <%end%>
-
-
-
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

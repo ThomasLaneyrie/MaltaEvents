@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :administrates, foreign_key: 'administrator_id', class_name: "Event"
   has_many :attendances, foreign_key: 'attendant_id'
   has_many :events, through: :attendances
+  has_one_attached :avatar   
 
   # Mailers 
   after_create :welcome_send                                 

@@ -1,7 +1,3 @@
-<% flash.each do |name, msg| %>                                                        
-  <div class="alert alert-success" role="alert"> <%= msg %> </div>       
-<% end %>   
-
 <h2>Tu souhaites participer à cet évènement ?</h2>
 <p>
 Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @event.title %></strong> à <%= @event.location %>

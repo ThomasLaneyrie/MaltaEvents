@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "events#index"
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :avatars, only: [:create]
+  end
   resources :attendances, only: [:new, :create]
   resources :events, only: [:index, :new, :create, :show] do
     resources :photoevents, only: [:create]

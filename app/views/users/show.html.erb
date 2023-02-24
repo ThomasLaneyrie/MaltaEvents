@@ -4,7 +4,15 @@
 <p>Ton e-mail de connexion : <%= @user.email %></p>
 <%= link_to "Modifier mon e-mail ou mon MdP", edit_user_registration_path  %>
 
+<h3>Changer d'avatar ?</h3>
+  <%= form_tag user_avatars_path(@user), multipart: true do %>         
+  <%= file_field_tag :avatar %>                                      
+  <%= submit_tag "mettre à jour"%>                                
+<% end %>
 
+<% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, alt: 'photoevent' %>
+<% end %>
 
 <div class="m-4">
 <h2> Les évènements que tu as organisé </h2> </div>
