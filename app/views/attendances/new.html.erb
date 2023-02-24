@@ -1,2 +1,7 @@
-<h1>Attendances#new</h1>
-<p>Find me in app/views/attendances/new.html.erb</p>
+<h1>Formulaire d'inscription</h1>
+
+
+<p>Cliquer sur le bouton ci-dessous pour passer au payement pour vous inscrire à l'évènement. Montant : <%= @event.price %>€</p>
+
+<%= @event %>
+NE PAS UTILISER PAS FONCTIONNEL :<%= button_to "Passer commande", checkout_create_path(total: @event.price, event: @event), class: "btn btn-success", remote: true %> 

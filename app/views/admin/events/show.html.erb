@@ -1,0 +1,5 @@
+<h2>Validation de l'event</h2>
+<%= @event.title %>
+
+<%= button_to "valider", { controller: 'events', action: 'update', id: @event.id}, method: :put, params: { validated: true } %>
+<%= button_to "Invalider", { controller: 'events', action: 'update', id: @event.id}, method: :put, params: { validated: false } %>

@@ -4,6 +4,59 @@
 
 <h1>Création d'un nouvel event à Malte</h1>
 
+<%= form_with model: @event do |f| %>
+  <div class="form-group">
+    <%= f.label "Titre" %><br>
+    <%= f.text_field :title, class: 'form-control'  %>
+    <%= f.label "Description" %><br>
+    <%= f.text_area :description, class: 'form-control'  %>
+    <%= f.label "Prix" %><br>
+    <%= f.text_field :price, class: 'form-control'  %>
+    <%= f.label "Lieu" %><br>
+    <%= f.text_field :location, class: 'form-control'  %><br>
+    <%= f.label "Date de début" %>
+    <%= f.date_select :start_date %><br><br>
+    <%= f.label "Durée en minutes" %>
+    <%= f.select :duration, (5..120).step(5).to_a %><br><br>
+    <%= f.label "Merci d'ajouter une photo à votre event :" %>
+    <%= file_field_tag :photoevent %>                                 
+    <%= submit_tag "Ajouter" %><br><br>
+    <%= f.submit "Create Event (Form_with)", class: "btn btn-primary"  %>
+  </div>
+<% end %>
+
+
+<h3>Avatar actuel</h3>
+<%if @event.photoevent.attached?%>
+  <%= image_tag @event.photoevent, alt: 'avatar' %>
+<%else%>
+  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+<%end%>
+
+
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+####################################### NE PAS UTILISER FORM CI-DESSOUS ######################################################
+<br><br><br>
+<%# <%= form_for :user, url: {action: "update", params: {id: @user.id}} do |f| %> %> Version permettant de mettre dans le params d'autres infos
+
+<%= form_for @event, url: {action: "create"} do |f| %>                               
+  <div class="form-group">
+      <label>Titre de l'event</label>
+      <%= f.text_field :title, class: 'form-control' %>       
+  </div>
+  <div class="form-group"> 
+      <label>Description</label> 
+       <%= f.text_area :description, class: 'form-control' %>      
+  </div>                                           
+  <div class="form-group">
+    <button type ="submit">Form_for</button>
+  </div>
+<% end %>
+
+
 <div class= "m-4">
   <%= form_tag url_for(action: 'create'), method: "post" do %>
     <p>
@@ -30,17 +83,6 @@
       <%= label_tag "Prix de participation :" %>                                
       <%= number_field 'price', @event.price, min: 1, max: 1000 %>  
     </p>           
-    <%= submit_tag "Create Post" %>                               
+    <%= submit_tag "Create Event" %>                               
   <% end %>
 </div>
-
-
-
-
-<%# 
-      t.datetime :start_date
-      t.integer :duration
-      t.string :title
-      t.text :description
-      t.integer :price
-      t.string :location %>

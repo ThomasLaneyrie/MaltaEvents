@@ -10,6 +10,12 @@ gem 'pry'
 gem 'dotenv-rails'
 gem 'date_validator'
 gem 'devise'
+gem 'stripe'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 # gem 'devise', github: 'heartcombo/devise', branch: 'main'
 
 

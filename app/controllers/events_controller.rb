@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :show]
+  before_action :is_validated?, only: [:show]
 
   def index
     @events = Event.all
@@ -10,9 +11,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(administrator:current_user,title:params[:title],description:params[:description],location:params[:location], start_date:params[:start_date], duration:params[:duration].join.to_i, price:params[:price].join.to_i)
+    @event = Event.new(event_params)
+    @event.administrator = current_user
+    binding.pry
+ 
     if @event.save
-      redirect_to event_path(@event.id), success: "L'event a été créé avec succès"  
+      redirect_to events_path
+      flash[:success] = "L'event a été créé avec succès, il est maintenant en attente de validation par les administrateurs" 
     else
       redirect_to new_event_path, danger: "L'event n'a pas pu être créé, recommence"
     end
@@ -20,5 +25,18 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+  end
+
+  private
+  def event_params
+    params.require(:event).permit(:title, :description, :location, :start_date, :duration, :price)
+  end
+
+  def is_validated?
+    @event = Event.find(params[:id])
+    unless @event.validated == true
+      redirect_to root_path
+      flash[:danger] = "Impossible d'afficher cet évènement, il n'est pas encore validé"
+    end
   end
 end

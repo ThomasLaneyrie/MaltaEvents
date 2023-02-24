@@ -10,7 +10,7 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
-50.times do |index|
+5.times do |index|
   User.create(
     email:Faker::Internet.email,
     password: "coucou",
@@ -32,7 +32,7 @@ end
    )
 end
 
-200.times do |index|
+10.times do |index|
   Attendance.create(
     stripe_customer_id: ["strip toi même", "lache la tunes"].sample,
     attendant: User.all.sample,

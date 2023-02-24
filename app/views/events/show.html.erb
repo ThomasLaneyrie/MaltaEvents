@@ -15,3 +15,32 @@ Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @even
 <li> Date de début : le <%= @event.start_date.strftime("%d-%m-%y") %> à <%= @event.start_date.strftime("%H:%M") %> </li>
 <li> Il vous en coutera : <%= @event.price %>€ </li>
 </ul>
+
+<%= button_to "Participer à l'évènement", attendances_path, params: { event: @event }, method: :post %>
+<%= button_to "Lancer le formulaire de participation à l'évèvement", new_attendance_path, params: { event: @event }, method: :get %>
+
+
+<%= button_to "Passer commande", checkout_create_path(total: @event.price), class: "btn btn-success", remote: true %> 
+
+<br><br><br><br><br>
+
+<h3>Photo actuelle de l'évènement</h3>
+<div class= "height: 100px">                           
+  <div class="row border border-success  d-flex justify-content-start">
+    <div class="col"></div>        
+      <%if @event.photoevent.attached?%>
+      <%= image_tag @event.photoevent, alt: 'photoevent' %>
+      <%else%>
+      <p>=== Il n'y a pas encore de photo liée à cet évènement ===</p>
+      <%end%>
+    </div>
+  </div>
+</div>
+<div class="container w-10 h-10">
+
+</div>
+  <h3>Changer la photo ? ?</h3>
+    <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
+    <%= file_field_tag :photoevent %>                                      
+    <%= submit_tag "mettre à jour" %>                                 
+  <% end %>

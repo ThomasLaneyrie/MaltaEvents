@@ -1,0 +1,9 @@
+<h2> Liste des events à valider </h2>
+<ul>
+  <% @events.each do |event|%>
+    <li>
+      Event N° <%= event.id %> : <%=event.title%> à <%=event.location%> <br>
+      <%= link_to "Valider l'évènement", admin_event_path(event.id) %>
+    </li><br>
+  <% end %>
+</ul>
