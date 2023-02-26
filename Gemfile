@@ -12,12 +12,10 @@ gem 'date_validator'
 gem 'devise'
 gem 'stripe'
 
-group :development do
+# group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-end
-# gem 'devise', github: 'heartcombo/devise', branch: 'main'
-
+# end
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"

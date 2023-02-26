@@ -9,6 +9,8 @@
 User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
+SeedFu.fixture_paths << Rails.root.join('public', 'images')
+
 
 5.times do |index|
   User.create(
@@ -28,11 +30,12 @@ end
     description: Faker::Lorem.paragraph_by_chars(number: 50, supplemental: false),
     price: rand(1..1000),
     location: ["Venera", "Attard", "La Valette", "San Julian", "Mdina", "Sliema", "Gzira"].sample,
-    administrator: User.all.sample
+    administrator: User.all.sample,
+    validated: true
    )
 end
 
-10.times do |index|
+20.times do |index|
   Attendance.create(
     stripe_customer_id: ["strip toi même", "lache la tunes"].sample,
     attendant: User.all.sample,

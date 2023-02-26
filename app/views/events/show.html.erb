@@ -32,11 +32,10 @@ Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @even
     </div>
   </div>
 </div>
-<div class="container w-10 h-10">
 
-</div>
   <h3>Changer la photo ? ?</h3>
     <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
-    <%= file_field_tag :photoevent %>                                      
+    <%= file_field_tag :photoevent %> 
     <%= submit_tag "mettre à jour" %>                                 
   <% end %>
+
