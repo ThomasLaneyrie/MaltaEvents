@@ -1,10 +1,2 @@
 <h1> Bienvenue sur la page admin </h1>
-
-<% if @users %>
-  <% @users.each do |user| %>
-    <p>
-      <%=user.first_name%> <%=user.last_name%>
-    </p>
-  <% end %>
-    <%= link_to "Rejoindre la page admin event", admin_events_path %>
-<% end %>
+<%= link_to "Rejoindre la page des évènements en attente de validation", admin_events_path %>

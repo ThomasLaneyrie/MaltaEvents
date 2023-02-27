@@ -5,37 +5,39 @@ Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @even
 
 <strong>Détails de l'évènement :</strong>
 <ul>
-<li> Description : <%= @event.description %> </li>
-<li> Evènement organisé par : <%= @event.administrator.email %> </li>
-<li> Actuellement nous sommes : <%= @event.attendants.count %> participants !  </li>
-<li> Date de début : le <%= @event.start_date.strftime("%d-%m-%y") %> à <%= @event.start_date.strftime("%H:%M") %> </li>
-<li> Il vous en coutera : <%= @event.price %>€ </li>
+  <li> Description : <%= @event.description %> </li>
+  <li> Evènement organisé par : <%= @event.administrator.email %> </li>
+  <li> Actuellement nous sommes : <%= @event.attendants.count %> participants !  </li>
+  <li> Date de début : le <%= @event.start_date.strftime("%d-%m-%y") %> à <%= @event.start_date.strftime("%H:%M") %> </li>
+  <li> Il vous en coutera : <%= @event.price %>€ </li>
 </ul>
 
-<%= button_to "Participer à l'évènement", attendances_path, params: { event: @event }, method: :post %>
-<%= button_to "Lancer le formulaire de participation à l'évèvement", new_attendance_path, params: { event: @event }, method: :get %>
+<%= button_to "Payer pour participer à l'évènement", event_checkout_create_path(@event.id, total: @event.price), class: "btn btn-success", remote: true  %>
 
 
-<%= button_to "Passer commande", checkout_create_path(total: @event.price), class: "btn btn-success", remote: true %> 
+<br><br>
 
-<br><br><br><br><br>
-
-<h3>Photo actuelle de l'évènement</h3>
-<div class= "height: 100px">                           
-  <div class="row border border-success  d-flex justify-content-start">
-    <div class="col"></div>        
-      <%if @event.photoevent.attached?%>
-      <%= image_tag @event.photoevent, alt: 'photoevent' %>
-      <%else%>
-      <p>=== Il n'y a pas encore de photo liée à cet évènement ===</p>
-      <%end%>
+<% if current_user == @event.administrator %> 
+<h3>Espace admin</h3>
+<hr>
+  <%= link_to "Voir la liste des participants à ton event", event_attendances_path(@event.id) %>
+  <hr>
+  <h3>Photo actuelle de l'évènement</h3>
+  <div class= "height: 100px">                           
+    <div class="row d-flex justify-content-start">
+      <div class="col"></div>        
+        <%if @event.photoevent.attached?%>
+        <%= image_tag @event.photoevent, alt: 'photoevent' %>
+        <%else%>
+        <p>=== Il n'y a pas encore de photo liée à cet évènement ===</p>
+        <%end%>
+      </div>
     </div>
   </div>
-</div>
-
-  <h3>Changer la photo ? ?</h3>
-    <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
-    <%= file_field_tag :photoevent %> 
-    <%= submit_tag "mettre à jour" %>                                 
-  <% end %>
-
+  <hr>
+    <h3>Changer la photo ?</h3>
+      <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
+      <%= file_field_tag :photoevent %> 
+      <%= submit_tag "mettre à jour" %>                                 
+    <% end %>
+<% end %>

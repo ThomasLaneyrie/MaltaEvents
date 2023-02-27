@@ -1,18 +1,19 @@
 class AttendancesController < ApplicationController
-  def new
-      @attendance = Attendance.new()
-      @event = Event.find(params[:event])
+  before_action :authenticate_user!, only: [:index]
+  before_action :check_if_admin, only: [:index]
+
+  def index
+    @event=Event.find(params[:event_id])
+    @attendances = Attendance.where(event_id:params[:event_id])
   end
 
-  def create
-    # @attendance = Attendance.new(event_id:params[:event],attendant: current_user)
-    # redirect_to checkout_create_url(total: @attendance.event.price)
-    # # if @attendance.save
-    #   puts "OK"
-  
-      
-    # else
-    #   puts "PAS OK"
-    # end
+
+  private
+  def check_if_admin
+    unless current_user.is_admin?
+      binding.pry
+      redirect_to events_path 
+      flash[:danger] = "Vous ne pouvez pas accéder à cette page, n'étant pas administrateur, désolé !"   # Marche pas (Car dans le truc du before_action ?)
+    end
   end
 end

@@ -1,0 +1,8 @@
+<h1>Liste des participants à ton event <%= @event.title %> <%= @event.id %></h1>
+
+<ul>
+  <% @attendances.each_with_index do |attendance, index| %>
+    <li><%= attendance.attendant.first_name %> <%= attendance.attendant.first_name %></li>
+  <% end %>
+</ul>
+

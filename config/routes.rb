@@ -7,15 +7,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
-  resources :attendances, only: [:new, :create]
+
   resources :events, only: [:index, :new, :create, :show] do
     resources :photoevents, only: [:create]
-  end
-
-  scope '/checkout' do
-    post 'create', to: 'checkout#create', as: 'checkout_create'
-    get 'success', to: 'checkout#success', as: 'checkout_success'
-    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    scope '/checkout' do
+      post 'create', to: 'checkout#create', as: 'checkout_create'
+      get 'success', to: 'checkout#success', as: 'checkout_success'
+      get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+      resources :attendances, only: [:new, :create, :index]
+    end
   end
 
   namespace :admin do
