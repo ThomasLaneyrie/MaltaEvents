@@ -9,8 +9,6 @@
 User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
-SeedFu.fixture_paths << Rails.root.join('public', 'images')
-
 
 5.times do |index|
   User.create(
