@@ -1,4 +1,4 @@
-class CheckoutsController < ApplicationController
+class CheckoutController < ApplicationController
   
   def create
     # @attendance = Attendance.new(event_id:params[:event],attendant: current_user)
