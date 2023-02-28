@@ -1,0 +1,66 @@
+a{
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.form-control{
+  min-width:400px; 
+  margin-bottom:5px;
+}
+
+body{
+  font-size: 14px;
+  font-family: 'Tilt Neon', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.banner{
+  background-image:url(https://thumbs.dreamstime.com/b/malta-flag-cloudy-sky-three-dimensional-render-252580115.jpg);
+  height:500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-small{
+  background-image:url(https://thumbs.dreamstime.com/b/beautiful-tropical-sand-beach-panorama-view-turquoise-sea-water-ocean-wave-green-palm-tree-summer-holidays-exotic-island-vacation-217077594.jpg);
+  height:250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.my-card{
+  max-width:400px;
+  height:auto;
+}
+
+/* .img-profil{
+  max-width:200px;
+  max-height:100px;
+  border:1px solid grey;
+} */
+
+.img-profil {
+	flex-shrink: 0;
+	margin: 20px;
+  height: 150px;
+  width: 150px;
+	/* height: calc(150px + 6vw);
+	width: calc(150px + 6vw); */
+	border: calc(8px + 0.2vw) solid transparent;
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+	background-size: cover;
+	box-sizing: border-box;
+	box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.img-profil-1 {
+	border-radius: 30%;
+	background-image: var(--img-url), linear-gradient(#f9f047, #0fd850);
+}
