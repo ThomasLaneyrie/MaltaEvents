@@ -6,35 +6,35 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%# <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-
-    <%# Lien pour mes ajouts de Bootstrap %>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <%# CDN Bootstrap %>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
+
+
+    <%# Police Tilt Neon pour body de mon site %>
+      <!-- 3 Liens pour Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+    <%# Appelle vers mes 2 manifests CSS & JS %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
     <%# Lien pour faire fonctionner Stripe %>
     <script src="https://js.stripe.com/v3/"></script>
-
-    <!-- Core theme CSS (includes Bootstrap)-->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
 
   </head>
 
   <header>
-    <%= render partial: 'renders/navbar'%>
+    <%= render partial: 'layouts/navbar'%>
   </header>
 
-  <%# <body style="min-heigth:0; display:flex; flex-direction:column;> %>
   <body>
-    <%= render partial: 'renders/flash' %>   
+    <%= render partial: 'layouts/flash' %>   
     <%= yield %>
+    <%= render partial: 'layouts/footer'%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-   
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  
-      <%= render partial: 'renders/footer'%>
-
   </body>
 </html>
 

@@ -12,6 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require styles_bootstrap
+ *= require styles_bootstrap_zephyr
  *= require styles
  */

@@ -1,30 +1,20 @@
- <h1>Création d'un nouvel event à Malte</h1>
 
-<%= form_with model: @event do |f| %>
-  <div class="form-group">
-    <%= f.label "Titre" %><br>
-    <%= f.text_field :title, class: 'form-control'  %>
-    <%= f.label "Description" %><br>
-    <%= f.text_area :description, class: 'form-control'  %>
-    <%= f.label "Prix" %><br>
-    <%= f.text_field :price, class: 'form-control'  %>
-    <%= f.label "Lieu" %><br>
-    <%= f.text_field :location, class: 'form-control'  %><br>
-    <%= f.label "Date de début" %>
-    <%= f.date_select :start_date %><br><br>
-    <%= f.label "Durée en minutes" %>
-    <%= f.select :duration, (5..120).step(5).to_a %><br><br>
-    <%= f.label "Merci d'ajouter une photo à votre event :" %>
-    <p> Image de l'event: </br>  <%= f.file_field :photoevent, class: "form-control" %></p>
-    <%= f.submit "Create Event (Form_with)", class: "btn btn-primary"  %>
-  </div>
-<% end %>
-
-
-<h3>Avatar actuel</h3>
-<%if @event.photoevent.attached?%>
-  <%= image_tag @event.photoevent, alt: 'avatar' %>
-<%else%>
-  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-<%end%>
+<div class="container-fluid d-flex flex-column align-items-center mt-5", style="max-width:1000px">
+ <h1>Création d'un nouvel event à Malte</h1><br>
+  <%= form_with model: @event do |f| %>
+    <div class="form-group">
+      <%= f.text_field :title, placeholder: "Titre", class: 'form-control', minlength: 5 %>
+      <%= f.text_area :description, placeholder: "Description", class: 'form-control',minlength: 5, maxlength:140  %>
+      <%= f.number_field :price, placeholder: "Prix", class: 'form-control', min:1  %>
+      <%= f.text_field :location, placeholder: "Lieu", class: 'form-control'  %><br>
+      <%= f.label "Date de début" %>
+      <%= f.date_select :start_date %><br><br>
+      <%= f.label "Durée en minutes" %>
+      <%= f.select :duration, (5..120).step(5).to_a %><br><br>
+      <%= f.label "Merci d'ajouter une photo à votre event :" %>
+      <p><%= f.file_field :photoevent, class: "form-control" %></p>
+      <%= f.submit "Create Event", class: "btn btn-primary"  %>
+    </div>
+  <% end %>
+</div>
 

@@ -1,43 +1,51 @@
-<h2>Tu souhaites participer à cet évènement ?</h2>
-<p>
-Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @event.title %></strong> à <%= @event.location %>
-</p>
+<body>
+  <div class="m-2">
+    <h2>Tu souhaites participer à cet évènement ?</h2>
+    <p>
+    Le <%= @event.start_date.strftime("%d-%m-%y") %> se tiendra le <strong><%= @event.title %></strong> à <%= @event.location %>
+    </p>
 
-<strong>Détails de l'évènement :</strong>
-<ul>
-  <li> Description : <%= @event.description %> </li>
-  <li> Evènement organisé par : <%= @event.administrator.email %> </li>
-  <li> Actuellement nous sommes : <%= @event.attendants.count %> participants !  </li>
-  <li> Date de début : le <%= @event.start_date.strftime("%d-%m-%y") %> à <%= @event.start_date.strftime("%H:%M") %> </li>
-  <li> Il vous en coutera : <%= @event.price %>€ </li>
-</ul>
+    <strong>Détails de l'évènement :</strong>
+    <ul>
+      <li> Description : <%= @event.description %> </li>
+      <li> Evènement organisé par : <%= @event.administrator.email %> </li>
+      <li> Actuellement nous sommes : <%= @event.attendants.count %> participants !  </li>
+      <li> Date de début : le <%= @event.start_date.strftime("%d-%m-%y") %> à <%= @event.start_date.strftime("%H:%M") %> </li>
+      <li> Il vous en coutera : <%= @event.price %>€ </li>
+    </ul>
 
-<%= button_to "Payer pour participer à l'évènement", event_checkout_create_path(@event.id, total: @event.price), class: "btn btn-success", remote: true  %>
+    <%= button_to "Payer pour participer à l'évènement", event_checkout_create_path(@event.id, total: @event.price), class: "btn btn-success", remote: true  %>
 
 
-<br><br>
+    <br><br>
 
-<% if current_user == @event.administrator %> 
-<h3>Espace admin</h3>
-<hr>
-  <%= link_to "Voir la liste des participants à ton event", event_attendances_path(@event.id) %>
-  <hr>
-  <h3>Photo actuelle de l'évènement</h3>
-  <div class= "height: 100px">                           
-    <div class="row d-flex justify-content-start">
-      <div class="col"></div>        
+    <% if current_user == @event.administrator %> 
+    <h3>Espace admin (Uniquement visible pour le créateur de l'évènement) </h3>
+    <hr>
+      <p> Statut de l'évènement : 
+        <% if @event.validated == true %>
+          Evènement validé -> les utilisateurs du site peuvent s'y inscrire !
+        <% elsif @event.validated == nil %>
+          Evènement non validé -> En attente de décision des administrateurs de MaltaEvents !
+        <% else %>
+          Evènement refusé par les administrateurs de MaltaEvents
+        <% end %>
+      </p>
+      <%= link_to "Voir la liste des participants à ton event", event_attendances_path(@event.id) %>
+      <hr>
+      <h3>Photo actuelle de l'évènement</h3>                        
         <%if @event.photoevent.attached?%>
-        <%= image_tag @event.photoevent, alt: 'photoevent' %>
+          <img class="img-event" <%= image_tag @event.photoevent, alt: 'photoevent'%>
         <%else%>
-        <p>=== Il n'y a pas encore de photo liée à cet évènement ===</p>
+          <p>=== Il n'y a pas encore de photo liée à cet évènement ===</p>
         <%end%>
-      </div>
-    </div>
-  </div>
-  <hr>
-    <h3>Changer la photo ?</h3>
-      <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
-      <%= file_field_tag :photoevent %> 
-      <%= submit_tag "mettre à jour" %>                                 
+      <hr>
+        <h3>Changer la photo ?</h3>
+          <%= form_tag event_photoevents_path(@event), multipart: true do %>                                                                       
+          <%= file_field_tag :photoevent %> 
+          <%= submit_tag "mettre à jour" %>                                 
+        <% end %>
     <% end %>
-<% end %>
+    <br><br>
+  </div>
+</body>

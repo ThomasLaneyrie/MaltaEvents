@@ -1,6 +1,6 @@
 class CheckoutController < ApplicationController
   def create
-  @total = params[:total].to_d                                                 
+  @total = params[:total].to_d                                          
   @session = Stripe::Checkout::Session.create(                             
     payment_method_types: ['card'],
     line_items: [
@@ -22,7 +22,7 @@ class CheckoutController < ApplicationController
   redirect_to @session.url, allow_other_host: true
 end
 
-def success   
+def success    
   @session = Stripe::Checkout::Session.retrieve(params[:session_id])                
   @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
   @event = Event.find(params[:event_id])
